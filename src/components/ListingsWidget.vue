@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <swiper v-if="listings.length" :slidesPerView="1.5" class="py-4" :freeMode="true" :modules="modules">
+            <swiper v-if="listings.length" :slidesPerView="1.5" class="py-4" :freeMode="{ enabled: true, sticky: false }" :modules="modules">
                 <swiper-slide v-for="listing in (filteredListings as any)" :key="listing.id">
                     <router-link :to="{ name: 'listings.show', params: {id : listing.id} }" class="relative">
                         <featured-badge v-if="listing.featured" class="top-2 left-4" />
