@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <swiper v-if="listings.length" :slidesPerView="1.5" class="py-4">
+            <swiper v-if="listings.length" :slidesPerView="1.5" class="py-4" :freeMode="true" :modules="modules">
                 <swiper-slide v-for="listing in (filteredListings as any)" :key="listing.id">
                     <router-link :to="{ name: 'listings.show', params: {id : listing.id} }" class="relative">
                         <featured-badge v-if="listing.featured" class="top-2 left-4" />
@@ -44,13 +44,17 @@
 <script setup lang="ts">
 import { ref, toRef, computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { FreeMode } from "swiper";
 import { IonImg, IonText, IonItem } from '@ionic/vue';
 import { useListingStore } from '@/stores'
 import { ApiGetListings } from '@/services/api-listings';
 import ListingIndicators from '@/components/ListingIndicators.vue'
 import FeaturedBadge from '@/components/FeaturedBadge.vue'
-import 'swiper/css';
 import ListingWidgetSkeleton from './ListingWidgetSkeleton.vue';
+import 'swiper/css';
+import "swiper/css/free-mode";
+
+const modules = [FreeMode]
 
 const props = defineProps({
     route: {
