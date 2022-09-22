@@ -1,0 +1,8 @@
+{
+  "name": "api-demo-ionic-vue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "app_id": "api-demo-ionic-vue"
+}
