@@ -7,31 +7,33 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-content>
+      <ion-content class="flex flex-col justify-between">
 
-        <ion-list id="app-menu">
+          <ion-list id="app-menu" class="h-[calc(100%-100px)]">
 
-          <ion-menu-toggle :auto-hide="false">
+            <ion-menu-toggle :auto-hide="false">
 
-            <ion-item role="button" v-for="(page, index) in publicPages" :key="index" router-direction="forward" :router-link="page.url">
-              <ion-label v-text="page.title" />
-            </ion-item>
-
-            <ion-item v-if="! authStore.isLoggedIn()" role="button" router-direction="forward" router-link="/login" class="mt-8">
-              <ion-label>Sign In</ion-label>
-            </ion-item>
-
-            <div v-else class="mt-8">
-
-              <ion-item role="button" v-for="(page, index) in authPages" :key="index" router-direction="forward" :router-link="page.url">
+              <ion-item role="button" v-for="(page, index) in publicPages" :key="index" router-direction="forward" :router-link="page.url">
                 <ion-label v-text="page.title" />
               </ion-item>
 
-            </div>
+              <ion-item v-if="! authStore.isLoggedIn()" role="button" router-direction="forward" router-link="/login" class="mt-8">
+                <ion-label>Sign In</ion-label>
+              </ion-item>
 
-          </ion-menu-toggle>
+              <div v-else class="mt-8">
 
-        </ion-list>
+                <ion-item role="button" v-for="(page, index) in authPages" :key="index" router-direction="forward" :router-link="page.url">
+                  <ion-label v-text="page.title" />
+                </ion-item>
+
+              </div>
+
+            </ion-menu-toggle>
+
+          </ion-list>
+
+          <dark-mode-toggle />
 
       </ion-content>
 
@@ -48,14 +50,15 @@ import {
   IonHeader, 
   IonToolbar, 
   IonLabel, 
-  IonItem, 
   IonList, 
   IonTitle, 
   IonMenu, 
+  IonItem,
   IonMenuToggle, 
   IonRouterOutlet 
 } from '@ionic/vue';
 import { useAuthStore } from '@/stores'
+import DarkModeToggle from '@/components/DarkModeToggle.vue'
 
 const authStore = useAuthStore()
 
