@@ -4,5 +4,5 @@
     "capacitor": {}
   },
   "type": "vue",
-  "app_id": "api-demo-ionic-vue"
+  "id": "api-demo-ionic-vue"
 }
